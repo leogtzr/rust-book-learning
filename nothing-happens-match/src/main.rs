@@ -1,5 +1,5 @@
 fn main() {
-    let day = 7;
+    let day = 9;
     match day {
         1 => println!("It is monday"),
         2 => println!("It is tuesday"),
@@ -8,6 +8,6 @@ fn main() {
         5 => println!("It is friday"),
         6 => println!("It is saturday"),
         7 => println!("It is sunday"),
-        _ => println!("Wrong day"),
+        _ => (), 
     };
 }
