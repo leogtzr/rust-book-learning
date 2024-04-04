@@ -57,13 +57,27 @@ mod back_of_house {
     }
 }
 
+use crate::front_of_house::hosting;
+
+mod customer {
+    use crate::front_of_house::hosting;
+
+    pub fn eat_at_restaurant() {
+        super::eat_at_restaurant();
+        hosting::add_to_waitlist();
+    }
+}
+
 pub fn eat_at_restaurant() {
     // Absolute path
-    // crate::front_of_house::hosting::add_to_waitlist();
+    crate::front_of_house::hosting::add_to_waitlist();
 
     // Relative path:
     // front_of_house::hosting::add_to_waitlist();
     //
+    // Using the `use` keyword.
+    hosting::add_to_waitlist();
+
     let mut meal = back_of_house::Breakfast::summer("Rye");
     // Change our mind about what bread we would like
     meal.toast = String::from("Wheat");
