@@ -25,4 +25,12 @@ fn main() {
             println!("Some value = {}", someVal);
         }
     }
+
+    let nums = vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    // let does_not_exist = &nums[123];
+    let does_not_exist = nums.get(123);
+    match does_not_exist {
+        None => {},
+        Some(theVal) => {}
+    }
 }
