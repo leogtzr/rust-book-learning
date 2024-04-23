@@ -1,4 +1,11 @@
-fn largest(list: &[i32]) -> &i32 {
+#[derive(Debug)]
+struct Point<T> {
+    x: T,
+    y: T,
+}
+
+/*
+fn largest<T>(list: &[T]) -> &T {
     let mut largest = &list[0];
 
     for item in list {
@@ -9,8 +16,12 @@ fn largest(list: &[i32]) -> &i32 {
 
     largest
 }
+*/
 
 fn main() {
+    let integer_point = Point { x: 5, y: 20 };
+    println!("Integer point: {:?}", integer_point);
+    
     // let number_list = vec![34, 50, 25, 100, 65];
 
     // let mut largest = &number_list[0];
