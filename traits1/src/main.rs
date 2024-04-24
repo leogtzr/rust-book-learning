@@ -1,4 +1,4 @@
-use traits1::{NewsArticle, Summary, Tweet};
+use traits1::{NewsArticle, Summary, Tweet, MediumPost};
 
 fn main() {
     let news_article = NewsArticle {
@@ -19,5 +19,9 @@ fn main() {
         retweet: false,
     };
 
+    let medium_post = MediumPost {};
+
     println!("1 new tweet: {}", tweet.summarize());
+
+    println!("Medium post: {}", medium_post.summarize());
 }
