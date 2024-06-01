@@ -1,26 +1,27 @@
-use std::{env, fs};
+use std::{env, fs, process};
+use std::error::Error;
 
-struct Config {
-    query: String,
-    file_path: String,
-}
-
-impl Config {
-    fn new(args: &[String]) -> Config {
-        let query = args[1].clone();
-        let file_path = args[2].clone();
-
-        Config { query, file_path }
-    }
-}
+use minigrep::Config;
 
 fn main() {
     let args: Vec<String> = env::args().collect();
 
-    let config = Config::new(&args);
+    //let config = Config::new(&args);
+    let config = Config::build(&args).unwrap_or_else(|err| {
+        println!("Problem parsing arguments: {err}");
+        process::exit(1);
+    });
 
-    let contents = fs::read_to_string(config.file_path)
-        .expect(&format!("Cannot read the file: {}", config.file_path));
+    //let _ = run(config);
+    if let Err(e) = minigrep::run(config) {
+        println!("Application error: {}", e);
 
-    println!("With text:\n{contents}");
+        process::exit(1);
+    }
+
+    /*run(config).unwrap_or_else(|e| {
+        println!("Application error: {}", e);
+
+        process::exit(1);
+    });*/
 }
